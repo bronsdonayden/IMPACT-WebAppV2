@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMPACT Webapp</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="viewer"></canvas>
+
+  <div id="fileLoader">
+    <label for="volumeInput">Load NRRD Volume</label>
+    <input type="file" id="volumeInput" accept=".nrrd">
+  </div>
+
+  <div id="hotkeys">
+    <p><b>Hotkeys</b></p>
+    <p>V — cycle view</p>
+    <p>1 — paint</p>
+    <p>2 — erase</p>
+    <p>X — save mask</p>
+    <p>Z — undo</p>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
