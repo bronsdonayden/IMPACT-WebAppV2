@@ -12,41 +12,31 @@
   <div id="fileLoader">
     <label for="volumeInput">Load NRRD Volume</label>
     <input type="file" id="volumeInput" accept=".nrrd">
-
-    <input type="file" id="maskInput" accept=".nrrd">
-    <label for="maskInput">Load Mask Volume</label>
   </div>
-  <div id="toolbar">
 
-    <!-- Dropdown -->
-    <label for="overlayMode">Overlay:</label>
-    <select id="overlayMode">
-      <option>No Overlay</option>
-      <option>Outline Only</option>
-      <option>Transparent Overlay</option>
-    </select>
-  
-    <!-- Sliders inline -->
-    <label>Contrast</label>
-    <input type="range" id="contrastSlider" min="0" max="255" value="128">
-  
-    <label>ImageOpacity</label>
-    <input type="range" id="ImageOpacitySlider" min="0" max="255" value="128">
-  
-    <label>OverlayOpacity</label>
-    <input type="range" id="OverlayOpacitySlider" min="0" max="255" value="128">
-  
-  </div>    
+  <div id="controls">
+    <label>Brush: <span id="brushLabel">3</span></label>
+    <input type="range" id="brushSlider" min="1" max="25" value="3">
+    <div id="controls">
+  <label>Brush Size: <span id="brushLabel">3</span></label>
+  <input type="range" id="brushSlider" min="1" max="25" value="3">
+</div>
+  </div>
+
   <div id="hotkeys">
     <p><b>Hotkeys</b></p>
     <p>V — cycle view</p>
-    <p>1 — paint</p>
-    <p>2 — erase</p>
-    <p>X — save mask</p>
+    <p>1 (hold) — paint</p>
+    <p>2 (hold) — erase</p>
+    <p>[ / ] — brush size</p>
+    <p>C — copy mask to next slice</p>
+    <p>B — copy mask to prev slice</p>
+    <p>I — interpolate between painted slices</p>
     <p>Z — undo</p>
+    <p>X — save mask</p>
+    <p>H — toggle mask visibility</p>
   </div>
 
   <script type="module" src="main.js"></script>
-  <script src="overlaySettings.js"></script>
 </body>
 </html>
