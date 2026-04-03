@@ -11,20 +11,58 @@ const nv = new Niivue({
 const canvas = document.getElementById("viewer");
 nv.attachToCanvas(canvas);
 
+// BOTH file inputs
 const volumeInput = document.getElementById("volumeInput");
+const maskInput = document.getElementById("maskInput");
 
-volumeInput.addEventListener("change", async (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
+// store files
+let volumeFile = null;
+let maskFile = null;
 
+// Helper: add mask overlay
+async function loadMask(file) {
+  const maskURL = URL.createObjectURL(file);
+  await nv.addVolume({
+    url: maskURL,
+    name: "mask",
+    colormap: "red",   // mask color
+    opacity: 0.4       // semi-transparent
+  });
+}
+
+// Load volume and setup drawer
+async function loadVolume(file) {
   const url = URL.createObjectURL(file);
   await nv.loadVolumes([{ url: url, name: file.name }]);
-
   nv.setSliceType(nv.sliceTypeAxial);
   nv.opts.dragMode = nv.dragModes.slicer3D;
-
-  // set up drawing after volume is loaded
   setupDrawer(nv);
+}
 
+// Try loading files if ready
+async function tryLoad() {
+  if (!volumeFile) return;
+
+  // Load the base volume
+  await loadVolume(volumeFile);
+
+  // Overlay mask if selected
+  if (maskFile) await loadMask(maskFile);
+
+  // hide loader UI
   document.getElementById("fileLoader").style.display = "none";
+}
+
+// When volume selected
+volumeInput.addEventListener("change", async (e) => {
+  volumeFile = e.target.files[0];
+  await tryLoad();
+});
+
+// When mask selected
+maskInput.addEventListener("change", async (e) => {
+  maskFile = e.target.files[0];
+
+  // Only overlay mask if volume already loaded
+  if (volumeFile) await loadMask(maskFile);
 });

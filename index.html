@@ -10,9 +10,12 @@
   <canvas id="viewer"></canvas>
 
   <div id="fileLoader">
-    <label for="volumeInput">Load NRRD Volume</label>
-    <input type="file" id="volumeInput" accept=".nrrd">
-  </div>
+    <label for="volumeInput">Load NRRD Volume / PNG</label>
+    <input type="file" id="volumeInput" accept=".nrrd,.png">
+
+    <label for="maskInput">Load Mask (NRRD / PNG)</label>
+    <input type="file" id="maskInput" accept=".nrrd,.png">
+</div>
 
   <div id="controls">
   <label>Brush Size: <span id="brushLabel">3</span></label>
