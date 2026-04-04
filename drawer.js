@@ -1,3 +1,6 @@
+import { saveNRRD } from "./export.js";
+
+
 export function setupDrawer(nv) {
   let position = null;
   let mode = null;
@@ -13,7 +16,7 @@ export function setupDrawer(nv) {
     brushLabel.textContent = brushSize;
   });
 
-  // --- helpers ---
+  // helpers 
 
   function getDims() {
     return {
@@ -96,7 +99,7 @@ export function setupDrawer(nv) {
     return false;
   }
 
-  // --- distance transform for interpolation ---
+  // distance transform for interpolation (CLAUDE)
 
   function chamferDistance(dist, w, h) {
     for (let y = 0; y < h; y++) {
@@ -135,7 +138,7 @@ export function setupDrawer(nv) {
     return sdf;
   }
 
-  // --- core features ---
+  // Important features 
 
   function paintAt(pos) {
     if (!nv.drawBitmap) return;
@@ -217,7 +220,7 @@ export function setupDrawer(nv) {
     nv.canvas.style.cursor = 'default';
   }
 
-  // --- events ---
+  // events handling
 
   nv.onLocationChange = (e) => {
     position = e.vox;
@@ -247,8 +250,19 @@ export function setupDrawer(nv) {
       brushSize = Math.min(25, brushSize + 1);
       brushSlider.value = brushSize;
       brushLabel.textContent = brushSize;
+    }else if (e.key === 'ArrowUp') {
+        nv.moveCrosshairInVox(0, 0, 1);
+      }
+    else if (e.key === 'ArrowDown') {
+        nv.moveCrosshairInVox(0, 0, -1);
     }
-  });
+    else if (e.key === 'ArrowLeft') {
+      nv.moveCrosshairInVox(-1, 0, 0);
+    }
+    else if (e.key === 'ArrowRight') {
+      nv.moveCrosshairInVox(1, 0, 0);
+    }
+    });
 
   window.addEventListener('keyup', (e) => {
     if (e.key === '1' || e.key === '2') {
@@ -263,9 +277,8 @@ export function setupDrawer(nv) {
   window.addEventListener('keypress', (e) => {
     if (e.code === 'KeyZ') {
       nv.drawUndo();
-    } else if (e.code === 'KeyX') {
-      nv.saveImage('mask.nii.gz', true);
-    } else if (e.code === 'KeyC') {
+    } 
+     else if (e.code === 'KeyC') {
       copySlice(1);
       nv.moveCrosshairInVox(0, 0, 1);
     } else if (e.code === 'KeyB') {
@@ -273,6 +286,9 @@ export function setupDrawer(nv) {
       nv.moveCrosshairInVox(0, 0, -1);
     } else if (e.code === 'KeyI') {
       interpolate();
+    }
+    else if (e.code === 'KeyX') {
+      saveNRRD(nv);
     }
     else if (e.code === 'KeyH') {
     if (nv.drawOpacity > 0) {

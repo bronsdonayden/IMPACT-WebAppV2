@@ -10,17 +10,22 @@
   <canvas id="viewer"></canvas>
 
   <div id="fileLoader">
-    <label for="volumeInput">Load NRRD Volume / PNG</label>
-    <input type="file" id="volumeInput" accept=".nrrd,.png">
+    <p><b>Load from file:</b></p>
+    <label for="volumeInput">Volume (.nrrd)</label>
+    <input type="file" id="volumeInput" accept=".nrrd">
 
-    <label for="maskInput">Load Mask (NRRD / PNG)</label>
-    <input type="file" id="maskInput" accept=".nrrd,.png">
-</div>
+    <label for="maskInput">Mask (.nrrd) — optional</label>
+    <input type="file" id="maskInput" accept=".nrrd">
+
+    <p><b>Or load from URL:</b></p>
+    <input type="text" id="volumeURL" placeholder="Volume URL (.nrrd)">
+    <input type="text" id="maskURL" placeholder="Mask URL (.nrrd) — optional">
+    <button id="loadURLButton">Load</button>
+  </div>
 
   <div id="controls">
-  <label>Brush Size: <span id="brushLabel">3</span></label>
-  <input type="range" id="brushSlider" min="1" max="25" value="3">
-</div>
+    <label>Brush Size: <span id="brushLabel">3</span></label>
+    <input type="range" id="brushSlider" min="1" max="25" value="3">
   </div>
 
   <div id="hotkeys">
@@ -29,11 +34,12 @@
     <p>1 (hold) — paint</p>
     <p>2 (hold) — erase</p>
     <p>[ / ] — brush size</p>
+    <p>Arrow keys — navigate slices</p>
     <p>C — copy mask to next slice</p>
     <p>B — copy mask to prev slice</p>
     <p>I — interpolate between painted slices</p>
     <p>Z — undo</p>
-    <p>X — save mask</p>
+    <p>X — save mask (.nrrd)</p>
     <p>H — toggle mask visibility</p>
   </div>
 

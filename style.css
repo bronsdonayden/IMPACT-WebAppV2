@@ -24,17 +24,50 @@ body {
   top: 16px;
   left: 16px;
   z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#fileLoader p {
+  color: #ccc;
+  font-size: 13px;
+  margin-top: 8px;
 }
 
 #fileLoader label {
   color: #aaa;
-  font-size: 14px;
-  display: block;
-  margin-bottom: 8px;
+  font-size: 12px;
 }
 
-#fileLoader input {
+#fileLoader input[type="file"] {
   color: #aaa;
+  font-size: 12px;
+}
+
+#fileLoader input[type="text"] {
+  background: #222;
+  color: #fff;
+  border: 1px solid #555;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  width: 300px;
+}
+
+#fileLoader button {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  width: 80px;
+}
+
+#fileLoader button:hover {
+  background: #444;
 }
 
 #controls {
@@ -50,18 +83,13 @@ body {
 }
 
 #controls input[type="range"] {
-  width: 100px;
-  margin-top: 2px;
+  width: 120px;
+  display: block;
+  margin-top: 4px;
 }
 
 #controls label {
   font-size: 12px;
-}
-
-#controls input[type="range"] {
-  width: 120px;
-  display: block;
-  margin-top: 4px;
 }
 
 #hotkeys {
