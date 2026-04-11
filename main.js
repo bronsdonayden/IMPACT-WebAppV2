@@ -13,6 +13,16 @@ nv.attachToCanvas(canvas);
 
 let drawerInitialized = false;
 
+// tab switching
+document.querySelectorAll('#loaderTabs .tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('#loaderTabs .tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('fileMode').style.display = tab.dataset.mode === 'file' ? 'flex' : 'none';
+    document.getElementById('urlMode').style.display = tab.dataset.mode === 'url' ? 'flex' : 'none';
+  });
+});
+
 // load a volume from a url
 async function loadVolume(url, name) {
   await nv.loadVolumes([{ url: url, name: name || "volume.nrrd" }]);

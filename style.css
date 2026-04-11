@@ -29,12 +29,6 @@ body {
   gap: 6px;
 }
 
-#fileLoader p {
-  color: #ccc;
-  font-size: 13px;
-  margin-top: 8px;
-}
-
 #fileLoader label {
   color: #aaa;
   font-size: 12px;
@@ -68,6 +62,31 @@ body {
 
 #fileLoader button:hover {
   background: #444;
+}
+
+#loaderTabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 8px;
+}
+
+#loaderTabs .tab {
+  color: #888;
+  font-size: 12px;
+  padding: 4px 12px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+#loaderTabs .tab.active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+#fileMode, #urlMode {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 #controls {

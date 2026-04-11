@@ -10,17 +10,23 @@
   <canvas id="viewer"></canvas>
 
   <div id="fileLoader">
-    <p><b>Load from file:</b></p>
-    <label for="volumeInput">Volume (.nrrd)</label>
-    <input type="file" id="volumeInput" accept=".nrrd">
+    <div id="loaderTabs">
+      <span class="tab active" data-mode="file">File</span>
+      <span class="tab" data-mode="url">URL</span>
+    </div>
 
-    <label for="maskInput">Mask (.nrrd) — optional</label>
-    <input type="file" id="maskInput" accept=".nrrd">
+    <div id="fileMode">
+      <label for="volumeInput">Volume (.nrrd)</label>
+      <input type="file" id="volumeInput" accept=".nrrd">
+      <label for="maskInput">Mask (.nrrd) — optional</label>
+      <input type="file" id="maskInput" accept=".nrrd">
+    </div>
 
-    <p><b>Or load from URL:</b></p>
-    <input type="text" id="volumeURL" placeholder="Volume URL (.nrrd)">
-    <input type="text" id="maskURL" placeholder="Mask URL (.nrrd) — optional">
-    <button id="loadURLButton">Load</button>
+    <div id="urlMode" style="display:none;">
+      <input type="text" id="volumeURL" placeholder="Volume URL (.nrrd)">
+      <input type="text" id="maskURL" placeholder="Mask URL — optional">
+      <button id="loadURLButton">Load</button>
+    </div>
   </div>
 
   <div id="controls">
