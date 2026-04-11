@@ -10,14 +10,12 @@
   <canvas id="viewer"></canvas>
 
   <div id="fileLoader">
-    <p><b>Load from file:</b></p>
     <label for="volumeInput">Volume (.nrrd)</label>
     <input type="file" id="volumeInput" accept=".nrrd">
 
     <label for="maskInput">Mask (.nrrd) — optional</label>
     <input type="file" id="maskInput" accept=".nrrd">
 
-    <p><b>Or load from URL:</b></p>
     <input type="text" id="volumeURL" placeholder="Volume URL (.nrrd)">
     <input type="text" id="maskURL" placeholder="Mask URL (.nrrd) — optional">
     <button id="loadURLButton">Load</button>
