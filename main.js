@@ -8,6 +8,8 @@ const nv = new Niivue({
   show3Dcrosshair: true,
 });
 
+window.nv = nv;
+
 const canvas = document.getElementById("viewer");
 nv.attachToCanvas(canvas);
 
